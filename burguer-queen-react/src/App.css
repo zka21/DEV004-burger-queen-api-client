@@ -11,6 +11,14 @@ body{
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 .lg-form-container{
   display: flex;
@@ -20,6 +28,7 @@ body{
   margin:1.5rem;
   box-shadow: 0 1rem 1rem rgba(0,0,0,0.2);
   backdrop-filter: blur(1rem);
+
 }
 .lg-form{
   align-items: center;
@@ -44,6 +53,20 @@ body{
 .lg-form h2{
   color:#724C11;
   font-family: Roboto;
+}
+.lg-form button{
+  margin-top: 10px;
+  height: 48px;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: #724C11;
+  color: #fdfffd;
 }
 /* 
 @keyframes logo-spin {
