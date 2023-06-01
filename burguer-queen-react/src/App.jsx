@@ -1,14 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import logoBurger from './assets/logoBurger.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
+      <main className='lg-main-conteiner'>
+        <div className='lg-logo'>
+          <img src={logoBurger} className='lg-logo-img' alt='Logo Burger Queen' />
+        </div>
+        <div className='lg-form-container'>
+          <form action="" className='lg-form'>
+            <h2>WELCOME</h2>
+            <label htmlFor="email">Email</label>
+            <input type="email" placeholder='example@gmail.com' />
+            <label htmlFor="password">Password</label>
+            <input type="password" placeholder='Enter Password' />
+          </form>
+        </div>
+      </main>
+
+    </>
+  )
+}
+
+export default App
+
+
+{/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -27,9 +46,4 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+      </p> */}
