@@ -9,8 +9,7 @@ const Login = ({ updateToken }) => {
   //Guardar la entrada del usuario  y password
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [prueba, setPrueba] = useState(true)
- 
+  const [textWrong, settextWrong] = useState(true);
   const loginClick = async (evt) => {
     evt.preventDefault()
     try {
@@ -24,7 +23,8 @@ const Login = ({ updateToken }) => {
       if (data.user.role === 'waiter') return navigate('/waiter')
 
     } catch{
-      setPrueba(false)
+      
+      settextWrong(false);
       console.log('No se encontraron roles asociados a su cuenta ');
     }
   };
@@ -48,12 +48,12 @@ const Login = ({ updateToken }) => {
             <input type="email" placeholder="example@gmail.com" 
             value={user} 
             onChange={(e) => setUser(e.target.value)}/>
-           {prueba === false && <h1>TEST</h1>}
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} 
             />
+             {textWrong === false && <p  style={{ color: "red" }}>verify email and password</p>}
             <button type="submit">Login</button>
           </form>
         </div>
