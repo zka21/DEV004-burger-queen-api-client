@@ -1,10 +1,10 @@
 import axios from "axios";
-const dominiolocal = 'http://localhost:8080'
+const dominiolocal = 'http://localhost:8080/login'
 // const dominio = 'https://burger-queen-api-mock-production-7906.up.railway.app'
 
 export async function httpLogin(usuario, contrasena) {
   try {
-    const response = await axios.post(`${dominiolocal}/login`,
+    const response = await axios.post(dominiolocal,
     // cuerpo: body de la peticion post, lo que yo envio al servidor
     {
       "email": usuario,
