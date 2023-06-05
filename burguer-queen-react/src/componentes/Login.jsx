@@ -1,9 +1,11 @@
 import logoBurger from '../assets/logoBurger.png'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { httpLogin  } from '../helpers/api';
 
 
 function Login() {
-
-  console.log("entra a a login")
+  
 
   return (
     <>

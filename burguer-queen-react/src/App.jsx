@@ -1,8 +1,8 @@
 
-import Chef from "./pages/Chef.jsx";
-import Waiter from "./pages/Waiter.jsx";
-import Administrador from "./pages/Administrator.jsx";
-import Login from "./pages/Login.jsx";
+import Chef from "./componentes/chef/Chef.jsx";
+import Waiter from "./componentes/waiter/Waiter.jsx";
+import Administrador from "./componentes/administardor/Administrator.jsx";
+import Login from "./componentes/Login.jsx";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import './App.css'
 function App() {
