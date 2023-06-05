@@ -9,8 +9,10 @@ const Login = ({ updateToken }) => {
   //Guardar la entrada del usuario  y password
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [prueba, setPrueba] = useState(true)
  
-  const loginClick = async (user, password) => {
+  const loginClick = async (evt) => {
+    evt.preventDefault()
     try {
       
       const data = await httpLogin(user, password);
@@ -22,6 +24,7 @@ const Login = ({ updateToken }) => {
       if (data.user.role === 'waiter') return navigate('/waiter')
 
     } catch{
+      setPrueba(false)
       console.log('No se encontraron roles asociados a su cuenta ');
     }
   };
@@ -39,18 +42,19 @@ const Login = ({ updateToken }) => {
           />
         </div>
         <div className="lg-form-container">
-          <form action="" className="lg-form">
+          <form action="" className="lg-form" onSubmit={(evt)=>{ loginClick(evt)}}>
             <h2>WELCOME</h2>
             <label htmlFor="email">Email</label>
             <input type="email" placeholder="example@gmail.com" 
             value={user} 
             onChange={(e) => setUser(e.target.value)}/>
+           {prueba === false && <h1>TEST</h1>}
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} 
             />
-            <button onClick={loginClick(user, password)}>Login</button>
+            <button type="submit">Login</button>
           </form>
         </div>
       </main>
