@@ -87,7 +87,7 @@ const Administrador = ({ token }) => {
                 <option value="chef">Chef</option>
                 <option value="waiter">Waiter</option>
               </select>
-              <button type="submit">Add Waiter</button>
+              <button type="submit">Add Employed</button>
             </form>
           </aside>
          </main>
