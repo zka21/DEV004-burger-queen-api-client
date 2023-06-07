@@ -1,6 +1,6 @@
 import Chef from "./componentes/chef/Chef.jsx";
 import Waiter from "./componentes/waiter/Waiter.jsx";
-import Administrador from "./componentes/administardor/Administrator.jsx";
+import Administrador from "./componentes/administrator/Employed.jsx";
 import Login from "./componentes/Login.jsx";
 import { useState } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Login updateToken={updateToken}/>} />
         <Route path="/waiter" element={<Waiter />} />
         <Route path="/chef" element={<Chef />} />
-        <Route path="/administrador" element={<Administrador />} />
+        <Route path="/administrador/employed" element={<Administrador token={token} />} />
       </Routes>
     </Router>
   );

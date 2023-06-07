@@ -18,7 +18,7 @@ const Login = ({ updateToken }) => {
 
       updateToken(data.accessToken)
       //segun el rol se navegara
-      if (data.user.role === 'admin') return navigate('/administrador')
+      if (data.user.role === 'admin') return navigate('/administrador/employed')
       if (data.user.role === 'chef') return navigate('/chef')
       if (data.user.role === 'waiter') return navigate('/waiter')
 
