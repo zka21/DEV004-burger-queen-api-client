@@ -38,3 +38,18 @@ export async function httpAddEmployed(token, user) {
     return console.log(err);
   }
 }
+
+export async function httpGetEmployed(token) {
+  try {
+    const response = await axios.get(`${dominiolocal}/users`, {
+      // autorization envio el token de autorizacion
+      headers: {
+       'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}

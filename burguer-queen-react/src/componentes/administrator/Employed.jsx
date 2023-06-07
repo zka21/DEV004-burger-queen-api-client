@@ -1,13 +1,13 @@
-import { httpAddEmployed } from '../../helpers/api'
+import { httpAddEmployed, httpGetEmployed } from '../../helpers/api'
 import './Administrador.css'
-import { useState} from "react";
+import { useState , useEffect} from "react";
 import { NavAdmin } from './NavAdmin';
 
-const Administrador = ({token}) => {
+const Administrador = ({ token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("")
-  const [employees, setEmployed] = useState([])
+  const [role, setRole] = useState("");
+  const [employees, setEmployed] = useState([]);
 
   async function saveEmployed(e) {
     // evita la recarga de la pagina - evita el comportamiento normal del evento
@@ -32,6 +32,17 @@ const Administrador = ({token}) => {
     }
   
   }
+  async function readEmployed() {
+    setEmployed(await httpGetEmployed(token));
+  }
+
+  useEffect(() => {
+    const read = async () => {
+      await readEmployed();
+    };
+    read();
+  }, )
+
 
     return (
       <>
@@ -48,8 +59,8 @@ const Administrador = ({token}) => {
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>?
-          {employees.map((employed) => (
+        <tbody>
+          {employees?.map((employed) => (
              <tr key={employed.id}>
                 <td>{employed.email}</td>
                 <td>{employed.role}</td>
