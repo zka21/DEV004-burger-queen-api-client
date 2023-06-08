@@ -1,6 +1,6 @@
 import { httpAddEmployed, httpGetEmployed } from '../../helpers/api'
 import './Administrador.css'
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { NavAdmin } from './NavAdmin';
 
 const Administrador = ({ token }) => {
@@ -20,17 +20,17 @@ const Administrador = ({ token }) => {
       "email": email,
       "password": password,
       "role": role
-    }  
+    }
     try {
-      
-      await httpAddEmployed(token,newUser);
-      console.log("Se inserto al empleado con exito")  
+
+      await httpAddEmployed(token, newUser);
+      console.log("Se inserto al empleado con exito")
       //segun el rol se navegar
 
-    } catch{
+    } catch {
       console.log('No se pudo agregar al empleado');
     }
-  
+
   }
   async function readEmployed() {
     setEmployed(await httpGetEmployed(token));
@@ -41,57 +41,57 @@ const Administrador = ({ token }) => {
       await readEmployed();
     };
     read();
-  }, )
+  },)
 
 
-    return (
-      <>
-          <NavAdmin />
-         <main>
-          <div>
-            <h5>List Of Waiters </h5>
+  return (
+    <>
+      <NavAdmin />
+      <main>
+        <div>
+          <h5>List Of Waiters </h5>
 
-             <table>
-        <thead>
-            <tr>
+          <table>
+            <thead>
+              <tr>
                 <th>Employed</th>
                 <th>Role</th>
                 <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-          {employees?.map((employed) => (
-             <tr key={employed.id}>
-                <td>{employed.email}</td>
-                <td>{employed.role}</td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-            </tr>
-          ))}
-        </tbody>
-    </table>
-          </div>
-          <aside className="admin-form-container">
-            <form action="" className="admin-form"  onSubmit={(e) => saveEmployed(e)}>
-              <h2><strong>Add New Waiter</strong></h2>
-              <label htmlFor="">Email</label>
-              <input type="email" placeholder="example@gmail.com" value={email}    onChange={(e) => setEmail(e.target.value)}/>
-              <label htmlFor="">Password</label>                                 
-              <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-              <label htmlFor="">Role</label>
-              <select name="" id="" value={role} onChange={(e) => setRole(e.target.value)}>
+              </tr>
+            </thead>
+            <tbody>
+              {employees?.map((employed) => (
+                <tr key={employed.id}>
+                  <td>{employed.email}</td>
+                  <td>{employed.role}</td>
+                  <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <aside className="admin-form-container">
+          <form action="" className="admin-form" onSubmit={(e) => saveEmployed(e)}>
+            <h2><strong>Add New Waiter</strong></h2>
+            <label htmlFor="">Email</label>
+            <input type="email" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label htmlFor="">Password</label>
+            <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <label htmlFor="">Role</label>
+            <select name="" id="" value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="" disabled="" selected="" >Select role:</option>
-                <option value="admin">Administrador</option>
-                <option value="chef">Chef</option>
-                <option value="waiter">Waiter</option>
-              </select>
-              <button type="submit">Add Employed</button>
-            </form>
-          </aside>
-         </main>
-      </>
-    )
-  }
-  export default Administrador;
+              <option value="admin">Administrador</option>
+              <option value="chef">Chef</option>
+              <option value="waiter">Waiter</option>
+            </select>
+            <button type="submit">Add Employed</button>
+          </form>
+        </aside>
+      </main>
+    </>
+  )
+}
+export default Administrador;

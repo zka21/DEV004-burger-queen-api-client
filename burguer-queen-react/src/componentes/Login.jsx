@@ -20,7 +20,7 @@ const Login = ({ updateToken }) => {
       //segun el rol se navegara
       if (data.user.role === 'admin') return navigate('/administrador/employed')
       if (data.user.role === 'chef') return navigate('/chef')
-      if (data.user.role === 'waiter') return navigate('/waiter')
+      if (data.user.role === 'waiter') return navigate('/waiter/orders')
 
     } catch{
       
