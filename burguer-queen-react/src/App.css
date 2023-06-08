@@ -52,6 +52,7 @@ img{/* banner 1 */
   filter: blur(10px); /* Efecto de desenfoque */
   z-index: -1;
   border-radius: 20px;
+  max-width: 400px;
 }
 
 .lg-form {
