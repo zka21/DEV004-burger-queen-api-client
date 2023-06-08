@@ -1,4 +1,4 @@
-import logoBurger from "../assets/logoBurger.png";
+import logoBurger from "../assets/banner.png";
 import { useState, useEffect } from "react";
  import { useNavigate } from "react-router-dom";
 import { httpLogin } from "../helpers/api";

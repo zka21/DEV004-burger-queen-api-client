@@ -3,9 +3,20 @@
   height: 100%;
 }
 body{
-  background-color: #F8F0D7;
+  background-color: #000000;
   padding: 0px;
 }
+img{/* banner 1 */
+
+  width: 100%;
+  }
+
+  .lg-logo{
+    width: 512px;
+    height: 648px;
+    display: flex;
+    align-items: center;
+  }
 .lg-main-conteiner{
   width: 100%;
   height: 100%;
@@ -20,27 +31,47 @@ body{
   margin: 0 auto;
   border-radius: 8px;
 }
-.lg-form-container{
-  display: flex;
-  height: 25rem ;
-  width: 25rem;
-  padding: 20px;
-  margin:1.5rem;
-  box-shadow: 0 1rem 1rem rgba(0,0,0,0.2);
-  backdrop-filter: blur(1rem);
+
+
+.lg-form-container {
+  position: relative;
+  width: 512px;
+  height: 648px;
+ border-radius: 20px;
 
 }
-.lg-form{
-  align-items: center;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
+
+.lg-form-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #D4AF37; /* Color mostaza */
+  filter: blur(10px); /* Efecto de desenfoque */
+  z-index: -1;
 }
+
+.lg-form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 80%;
+  height: 80%;
+  max-width: 400px;
+}
+
+
 .lg-form label{
   margin: 10px 0px 10px 0px;
   color:#724C11;
   font-family: Roboto;
+  text-align: start;
 }
 .lg-form input{
   border:none;
@@ -68,26 +99,8 @@ body{
   background-color: #724C11;
   color: #fdfffd;
 }
-/* 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+@media (max-width: 1133px) and (orientation: portrait) {
+  /* Estilos específicos para tablets en posición vertical */
+  /* Aquí puedes agregar tus estilos */
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
