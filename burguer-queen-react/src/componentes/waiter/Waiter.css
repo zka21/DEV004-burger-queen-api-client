@@ -1,0 +1,36 @@
+/* Estilos para el logo */
+.waiter-logoburger-img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Estilos para la barra de navegación */
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #724C11;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el botón de logout */
+  .waiter-btn {
+    background-color: #724C11;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .waiter-btn:hover {
+    background-color: #555;
+  }
