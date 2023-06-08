@@ -14,12 +14,39 @@ export default function Waiter() {
             <button className='wt-products-section__button'>Lunch & Dinner</button>
           </div>
           <div className='wt-products-section__content'>
-            <div className='wt-card'></div>
-            <div className='wt-card'></div>
-            <div className='wt-card'></div>
-            <div className='wt-card'></div>
-            <div className='wt-card'></div>
-            <div className='wt-card'></div>
+            <div className='wt-card'>Hamburguesa</div>
+            <div className='wt-card'>Café</div>
+            <div className='wt-card'>Jugo de papaya</div>
+            <div className='wt-card'>Empanada</div>
+            <div className='wt-card'>Torta de leche</div>
+            <div className='wt-card'>Pay</div>
+            <div className='wt-card'>Hamburguesa</div>
+            <div className='wt-card'>Café</div>
+            <div className='wt-card'>Jugo de papaya</div>
+            <div className='wt-card'>Empanada</div>
+            <div className='wt-card'>Torta de leche</div>
+            <div className='wt-card'>Pay</div>
+            <div className='wt-card'>Hamburguesa</div>
+            <div className='wt-card'>Café</div>
+            <div className='wt-card'>Jugo de papaya</div>
+            <div className='wt-card'>Empanada</div>
+            <div className='wt-card'>Torta de leche</div>
+            <div className='wt-card'>Pay</div>  <div className='wt-card'>Hamburguesa</div>
+            <div className='wt-card'>Café</div>
+            <div className='wt-card'>Jugo de papaya</div>
+            <div className='wt-card'>Empanada</div>
+            <div className='wt-card'>Torta de leche</div>
+            <div className='wt-card'>Pay</div>
+            <div className='wt-card'>Hamburguesa</div>
+            <div className='wt-card'>Café</div>
+            <div className='wt-card'>Jugo de papaya</div>
+            <div className='wt-card'>Empanada</div>
+            <div className='wt-card'>Torta de leche</div>
+            <div className='wt-card'>Pay</div>
+            <div className='wt-card'>Hamburguesa</div>
+            <div className='wt-card'>Café</div>
+            <div className='wt-card'>Jugo de papaya</div>
+ 
           </div>
         </section >
          

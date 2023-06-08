@@ -51,20 +51,20 @@ const Administrador = ({ token }) => {
         <div>
           <h5>List Of Waiters </h5>
 
-          <table>
+          <table className='table-list-of-employed'>
             <thead>
               <tr>
-                <th>Employed</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th className='table-th-td' id='table-th'>Employed</th>
+                <th className='table-th-td' id='table-th'>Role</th>
+                <th className='table-th-td' id='table-th'>Actions</th>
               </tr>
             </thead>
             <tbody>
               {employees?.map((employed) => (
                 <tr key={employed.id}>
-                  <td>{employed.email}</td>
-                  <td>{employed.role}</td>
-                  <td>
+                  <td className='table-th-td' id='table-td'>{employed.email}</td>
+                  <td className='table-th-td' id='table-td'>{employed.role}</td>
+                  <td className='table-th-td' id='table-td'>
                     <button>Edit</button>
                     <button>Delete</button>
                   </td>

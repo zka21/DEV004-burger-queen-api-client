@@ -3,7 +3,7 @@
   height: 100%;
 }
 body{
-  background-color: #000000;
+  background-color: #fcfcfc;
   padding: 0px;
 }
 img{/* banner 1 */
@@ -35,9 +35,9 @@ img{/* banner 1 */
 
 .lg-form-container {
   position: relative;
-  width: 512px;
-  height: 648px;
  border-radius: 20px;
+ width: 40%;
+    height: 80%;
 
 }
 
@@ -51,6 +51,7 @@ img{/* banner 1 */
   background-color: #D4AF37; /* Color mostaza */
   filter: blur(10px); /* Efecto de desenfoque */
   z-index: -1;
+  border-radius: 20px;
 }
 
 .lg-form {
@@ -64,6 +65,7 @@ img{/* banner 1 */
   width: 80%;
   height: 80%;
   max-width: 400px;
+  border-radius: 20px;
 }
 
 
