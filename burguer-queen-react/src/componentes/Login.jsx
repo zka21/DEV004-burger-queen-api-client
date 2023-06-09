@@ -43,7 +43,8 @@ const Login = ({ updateToken }) => {
         </div>
         <div className="lg-form-container">
           <form action="" className="lg-form" onSubmit={(evt)=>{ loginClick(evt)}}>
-            <h2>WELCOME</h2>
+    
+            <p>Welcome</p>
             <label htmlFor="email">Email</label>
             <input type="email" placeholder="example@gmail.com" 
             value={user} 
@@ -53,8 +54,9 @@ const Login = ({ updateToken }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)} 
             />
-             {textWrong === false && <p  style={{ color: "red" }}>verify email and password</p>}
+             {textWrong === false && <span  style={{ color: "red" }}>verify email and password</span>}
             <button type="submit">Login</button>
+      
           </form>
         </div>
       </main>

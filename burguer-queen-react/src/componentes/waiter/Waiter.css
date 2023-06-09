@@ -34,3 +34,80 @@
   .waiter-btn:hover {
     background-color: #555;
   }
+
+  .wt-main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .wt-products-section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    height: 500px;
+    overflow: auto;
+  }
+
+  .wt-products_section__buttons{
+
+  }
+  .wt-products-section__button{
+
+  }
+  .wt-products-section__content{
+    margin-top: 50px;
+  }
+  .wt-card{
+
+  }
+  .wt-order-section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+  }
+
+  .wt-orders-table__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .wt-orders-table__heading {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .wt-orders-table__cell {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border: 1px solid black;
+    text-align: left;
+  }
+  
+  .wt-orders-table__image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .wt-orders-table__price {
+    margin: 0;
+  }
+  
+  .wt-orders-table__button {
+    padding: 5px 10px;
+    margin-right: 5px;
+  }
+  
+  .wt-orders-table__row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+.wt-orders-table__total{
+
+}
+.wt-orders-table__submit-button{
+
+}
