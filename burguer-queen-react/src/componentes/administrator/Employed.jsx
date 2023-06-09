@@ -47,7 +47,7 @@ const Administrador = ({ token }) => {
   return (
     <>
       <NavAdmin />
-      <main>
+      <main className='adm-main-container'>
         <div>
           <h5>List Of Waiters </h5>
 

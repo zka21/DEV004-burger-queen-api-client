@@ -49,7 +49,7 @@ nav ul li a {
 .admin-btn:hover {
   background-color: #555;
 }
-main {
+.adm-main-container {
   display: flex;
   align-items: center;
   justify-content: center;
