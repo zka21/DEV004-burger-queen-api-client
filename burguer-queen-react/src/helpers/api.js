@@ -67,19 +67,32 @@ export async function httpGetProducts(token) {
     console.log(err)
   }
 }
-/*
+
 export async function httpCreateOrder(token, product){
   try {
-    const reponse = await axios.post(`${dominiolocal}/products`, product, {
+    const response = await axios.post(`${dominiolocal}/products`, product, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       }
     });
-    return reponse.data
+    return response.data
   }catch(err) {
     console.log(err);
   }
 }
 
-*/
+export async function httpGetOrder(token){
+  try {
+    const response = await axios.get(`${dominiolocal}/products`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    });
+    return response.data
+  }catch(err) {
+    console.log(err);
+  }
+}
+

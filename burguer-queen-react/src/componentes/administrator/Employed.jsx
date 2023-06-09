@@ -32,6 +32,7 @@ const Administrador = ({ token }) => {
     }
 
   }
+
   async function readEmployed() {
     setEmployed(await httpGetEmployed(token));
   }

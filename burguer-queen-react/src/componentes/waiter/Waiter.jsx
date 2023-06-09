@@ -1,10 +1,13 @@
 import { NavWaiter } from './NavWaiter.jsx'
-import { FormOrders } from './FormOrders.jsx'
 import { useState,useEffect } from 'react'
- import { httpGetProducts } from '../../helpers/api.js'
- const Waiter= ({ token })=> {
+ import { httpGetProducts, httpCreateOrder, httpGetOrder } from '../../helpers/api.js'
+ import { DateTime } from 'luxon'
 
-    const [products, setProducts] = useState([])
+ const Waiter= ({ token })=> {
+  const [ userId , setUserId] =  useState("");
+  const [customer, setCustomer] = useState("");
+  const [productsOrder, setProductsOrder] = useState([])
+  const [products, setProducts] = useState([])
 
   async function readProducts() {
     setProducts(await httpGetProducts(token));
@@ -17,7 +20,39 @@ import { useState,useEffect } from 'react'
     read();
   }, )
 
+  async function saveOrder(e) {
+    // evita la recarga de la pagina - evita el comportamiento normal del evento
+    e.preventDefault();
+    // si alguno de los 3 datos no tiene valor no se permite continuar
+    if (!customer) return alert("You must enter name of custumer")
 
+    const dateEntry = DateTime.now().toISO();
+    console.log(dateEntry);
+
+    const newOrder = {
+      userId: userId,
+      client: customer,
+      products: productsOrder,
+      status: "pending",
+      dateEntry: dateEntry
+    }
+    try {
+
+     const result= await httpCreateOrder(token, newOrder);
+     const resultado= await httpGetOrder(token);
+   console.log(result);
+     console.log(resultado)
+      // await httpGetOrden
+      setProductsOrder([])
+      setCustomer("")
+      console.log("Se agrego la orden con exito")
+
+    } catch(err) {
+      console.log("este es un error: " + err);
+      console.log('No se agrego la orden con exito');
+    }
+
+  }
   return (
     <>
 
@@ -37,6 +72,7 @@ import { useState,useEffect } from 'react'
                   <div className='card-body'> 
                      <h4 className='card-title'>{product.name}</h4>
                      <h6 className='card-text'>{product.price}</h6>
+                     <h5 className='card-date'>{product.dateEntry}</h5>
                   </div>
             </main>
             ))}
@@ -44,7 +80,82 @@ import { useState,useEffect } from 'react'
         </section >
          
         <section className='wt-order-section'>
-           <FormOrders/>
+           <form className="wt-orders-table" onSubmit={(e) => saveOrder(e) }>
+        <label htmlFor="" className="wt-orders-table__label">Customer</label>
+        <input type="text" name="" id="" className="wt-orders-table__input" value={customer} onChange={(e) => setCustomer (e.target.value)} />
+        <div className="wt-orders-table__table-container">
+          <table className="wt-orders-table__table">
+            <thead>
+              <tr className="wt-orders-table__row">
+                <th className="wt-orders-table__heading">Product</th>
+                <th className="wt-orders-table__heading">Price</th>
+                <th className="wt-orders-table__heading">Amount</th>
+                <th className="wt-orders-table__heading">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="wt-orders-table__row">
+                <td className="wt-orders-table__cell">
+                  <img src="" alt="" className="wt-orders-table__image" />
+                </td>
+                <td className="wt-orders-table__cell">
+                  <h5 className="wt-orders-table__price">$3</h5>
+                </td>
+                <td className="wt-orders-table__cell">2</td>
+                <td className="wt-orders-table__cell">
+                  <button className="wt-orders-table__button">less</button>
+                  <button className="wt-orders-table__button">more</button>
+                  <button className="wt-orders-table__button">cancel</button>
+                </td>
+              </tr>
+              <tr className="wt-orders-table__row">
+                <td className="wt-orders-table__cell">
+                  <img src="" alt="" className="wt-orders-table__image" />
+                </td>
+                <td className="wt-orders-table__cell">
+                  <h5 className="wt-orders-table__price">$3</h5>
+                </td>
+                <td className="wt-orders-table__cell">2</td>
+                <td className="wt-orders-table__cell">
+                  <button className="wt-orders-table__button">less</button>
+                  <button className="wt-orders-table__button">more</button>
+                  <button className="wt-orders-table__button">cancel</button>
+                </td>
+              </tr>
+              <tr className="wt-orders-table__row">
+                <td className="wt-orders-table__cell">
+                  <img src="" alt="" className="wt-orders-table__image" />
+                </td>
+                <td className="wt-orders-table__cell">
+                  <h5 className="wt-orders-table__price">$3</h5>
+                </td>
+                <td className="wt-orders-table__cell">2</td>
+                <td className="wt-orders-table__cell">
+                  <button className="wt-orders-table__button">less</button>
+                  <button className="wt-orders-table__button">more</button>
+                  <button className="wt-orders-table__button">cancel</button>
+                </td>
+              </tr>
+              <tr className="wt-orders-table__row">
+                <td className="wt-orders-table__cell">
+                  <img src="" alt="" className="wt-orders-table__image" />
+                </td>
+                <td className="wt-orders-table__cell">
+                  <h5 className="wt-orders-table__price">$3</h5>
+                </td>
+                <td className="wt-orders-table__cell">2</td>
+                <td className="wt-orders-table__cell">
+                  <button className="wt-orders-table__button">less</button>
+                  <button className="wt-orders-table__button">more</button>
+                  <button className="wt-orders-table__button">cancel</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="wt-orders-table__total">total:</p>
+        <button type="submit" className="wt-orders-table__submit-button">Send the order</button>
+      </form>
         </section>
       </main>
     </>
