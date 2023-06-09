@@ -58,10 +58,32 @@
 
   }
   .wt-products-section__content{
-    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "Rubik";
+    margin-top: 4%;
+    margin-bottom: 5%;
+    padding: 30px 40px;
   }
   .wt-card{
-
+ 
+  }
+  .card-img{
+    width: 85px;
+height: 84px;
+    object-fit: cover;
+  }
+  .card-of-product{
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    /* width: 187px;
+    height: 160px; */
+    width: 123px;
+    height: 139px;
+  
   }
   .wt-order-section{
     display: flex;

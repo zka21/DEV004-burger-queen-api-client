@@ -35,7 +35,7 @@ import { useState,useEffect } from 'react'
                     <img src={product.image} alt={`Product ${product.name}`} />
                   </div>  
                   <div className='card-body'> 
-                     <h4 className='card-title'>{product.title}</h4>
+                     <h4 className='card-title'>{product.name}</h4>
                      <h6 className='card-text'>{product.price}</h6>
                   </div>
             </main>
