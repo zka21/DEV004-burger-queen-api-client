@@ -44,7 +44,7 @@ const Login = ({ updateToken }) => {
         <div className="lg-form-container">
           <form action="" className="lg-form" onSubmit={(evt)=>{ loginClick(evt)}}>
     
-            <h2>WELCOME</h2>
+            <h2>Welcome</h2>
             <label htmlFor="email">Email</label>
             <input type="email" placeholder="example@gmail.com" 
             value={user} 
