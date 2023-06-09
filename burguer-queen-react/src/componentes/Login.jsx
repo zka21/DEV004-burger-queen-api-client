@@ -54,7 +54,7 @@ const Login = ({ updateToken }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)} 
             />
-             {textWrong === false && <p  style={{ color: "red" }}>verify email and password</p>}
+             {textWrong === false && <span  style={{ color: "red" }}>verify email and password</span>}
             <button type="submit">Login</button>
       
           </form>

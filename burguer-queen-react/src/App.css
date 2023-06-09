@@ -89,6 +89,9 @@ img{/* banner 1 */
 .lg-form h2{
   color:#724C11;
 }
+.lg-form span{
+  text-align: center;
+}
 .lg-form button{
   margin-top: 32px;
   height: 48px;

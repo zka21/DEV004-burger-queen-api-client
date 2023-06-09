@@ -1,7 +1,22 @@
 import { NavWaiter } from './NavWaiter.jsx'
 import { FormOrders } from './FormOrders.jsx'
+import { useState,useEffect } from 'react'
+ import { httpGetProducts } from '../../helpers/api.js'
+ const Waiter= ({ token })=> {
 
-export default function Waiter() {
+    const [products, setProducts] = useState([])
+
+  async function readProducts() {
+    setProducts(await httpGetProducts(token));
+  }
+
+  useEffect(() => {
+    const read = async () => {
+      await readProducts();
+    };
+    read();
+  }, )
+
 
   return (
     <>
@@ -14,40 +29,18 @@ export default function Waiter() {
             <button className='wt-products-section__button'>Lunch & Dinner</button>
           </div>
           <div className='wt-products-section__content'>
-            <div className='wt-card'>Hamburguesa</div>
-            <div className='wt-card'>Café</div>
-            <div className='wt-card'>Jugo de papaya</div>
-            <div className='wt-card'>Empanada</div>
-            <div className='wt-card'>Torta de leche</div>
-            <div className='wt-card'>Pay</div>
-            <div className='wt-card'>Hamburguesa</div>
-            <div className='wt-card'>Café</div>
-            <div className='wt-card'>Jugo de papaya</div>
-            <div className='wt-card'>Empanada</div>
-            <div className='wt-card'>Torta de leche</div>
-            <div className='wt-card'>Pay</div>
-            <div className='wt-card'>Hamburguesa</div>
-            <div className='wt-card'>Café</div>
-            <div className='wt-card'>Jugo de papaya</div>
-            <div className='wt-card'>Empanada</div>
-            <div className='wt-card'>Torta de leche</div>
-            <div className='wt-card'>Pay</div>  <div className='wt-card'>Hamburguesa</div>
-            <div className='wt-card'>Café</div>
-            <div className='wt-card'>Jugo de papaya</div>
-            <div className='wt-card'>Empanada</div>
-            <div className='wt-card'>Torta de leche</div>
-            <div className='wt-card'>Pay</div>
-            <div className='wt-card'>Hamburguesa</div>
-            <div className='wt-card'>Café</div>
-            <div className='wt-card'>Jugo de papaya</div>
-            <div className='wt-card'>Empanada</div>
-            <div className='wt-card'>Torta de leche</div>
-            <div className='wt-card'>Pay</div>
-            <div className='wt-card'>Hamburguesa</div>
-            <div className='wt-card'>Café</div>
-            <div className='wt-card'>Jugo de papaya</div>
- 
-          </div>
+            {products?.map((product) => (
+              <main key={product.id} className='card-of-product'>
+                  <div className='card-img'>
+                    <img src={product.image} alt={`Product ${product.name}`} />
+                  </div>  
+                  <div className='card-body'> 
+                     <h4 className='card-title'>{product.title}</h4>
+                     <h6 className='card-text'>{product.price}</h6>
+                  </div>
+            </main>
+            ))}
+            </div>
         </section >
          
         <section className='wt-order-section'>
@@ -57,3 +50,4 @@ export default function Waiter() {
     </>
   )
 }
+export default Waiter
