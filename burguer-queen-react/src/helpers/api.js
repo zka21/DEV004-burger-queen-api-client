@@ -70,7 +70,7 @@ export async function httpGetProducts(token) {
 
 export async function httpCreateOrder(token, product){
   try {
-    const response = await axios.post(`${dominiolocal}/products`, product, {
+    const response = await axios.post(`${dominiolocal}/orders`, product, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -84,7 +84,7 @@ export async function httpCreateOrder(token, product){
 
 export async function httpGetOrder(token){
   try {
-    const response = await axios.get(`${dominiolocal}/products`, {
+    const response = await axios.get(`${dominiolocal}/orders`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,

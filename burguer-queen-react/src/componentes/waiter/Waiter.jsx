@@ -4,11 +4,11 @@ import { useState,useEffect } from 'react'
  import { DateTime } from 'luxon'
 
  const Waiter= ({ token })=> {
-  const [ userId , setUserId] =  useState("");
   const [customer, setCustomer] = useState("");
-  const [productsOrder, setProductsOrder] = useState([])
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  // const [productsOrder, setProductsOrder] = useState([])
   const [products, setProducts] = useState([])
-
+  // const [card, setCard]= useState()
   async function readProducts() {
     setProducts(await httpGetProducts(token));
   }
@@ -19,7 +19,8 @@ import { useState,useEffect } from 'react'
     };
     read();
   }, )
-
+  
+  
   async function saveOrder(e) {
     // evita la recarga de la pagina - evita el comportamiento normal del evento
     e.preventDefault();
@@ -30,9 +31,8 @@ import { useState,useEffect } from 'react'
     console.log(dateEntry);
 
     const newOrder = {
-      userId: userId,
       client: customer,
-      products: productsOrder,
+      products: selectedProducts,
       status: "pending",
       dateEntry: dateEntry
     }
@@ -43,7 +43,7 @@ import { useState,useEffect } from 'react'
    console.log(result);
      console.log(resultado)
       // await httpGetOrden
-      setProductsOrder([])
+      setSelectedProducts([])
       setCustomer("")
       console.log("Se agrego la orden con exito")
 
@@ -53,6 +53,10 @@ import { useState,useEffect } from 'react'
     }
 
   }
+
+  const addProductToOrder = (product) => {
+    setSelectedProducts((prevProducts) => [...prevProducts, product]);
+  };
   return (
     <>
 
@@ -65,22 +69,21 @@ import { useState,useEffect } from 'react'
           </div>
           <div className='wt-products-section__content'>
             {products?.map((product) => (
-              <main key={product.id} className='card-of-product'>
+              <main key={product.id} className='card-of-product' onClick={() => addProductToOrder(product)}>
                   <div className='card-img'>
                     <img src={product.image} alt={`Product ${product.name}`} />
                   </div>  
                   <div className='card-body'> 
                      <h4 className='card-title'>{product.name}</h4>
                      <h6 className='card-text'>{product.price}</h6>
-                     <h5 className='card-date'>{product.dateEntry}</h5>
                   </div>
-            </main>
+              </main>
             ))}
             </div>
         </section >
          
         <section className='wt-order-section'>
-           <form className="wt-orders-table" onSubmit={(e) => saveOrder(e) }>
+           <form className="wt-orders-table" onSubmit={(e) => saveOrder(e) }  >
         <label htmlFor="" className="wt-orders-table__label">Customer</label>
         <input type="text" name="" id="" className="wt-orders-table__input" value={customer} onChange={(e) => setCustomer (e.target.value)} />
         <div className="wt-orders-table__table-container">
@@ -94,63 +97,23 @@ import { useState,useEffect } from 'react'
               </tr>
             </thead>
             <tbody>
-              <tr className="wt-orders-table__row">
-                <td className="wt-orders-table__cell">
-                  <img src="" alt="" className="wt-orders-table__image" />
-                </td>
-                <td className="wt-orders-table__cell">
-                  <h5 className="wt-orders-table__price">$3</h5>
-                </td>
-                <td className="wt-orders-table__cell">2</td>
-                <td className="wt-orders-table__cell">
-                  <button className="wt-orders-table__button">less</button>
-                  <button className="wt-orders-table__button">more</button>
-                  <button className="wt-orders-table__button">cancel</button>
-                </td>
-              </tr>
-              <tr className="wt-orders-table__row">
-                <td className="wt-orders-table__cell">
-                  <img src="" alt="" className="wt-orders-table__image" />
-                </td>
-                <td className="wt-orders-table__cell">
-                  <h5 className="wt-orders-table__price">$3</h5>
-                </td>
-                <td className="wt-orders-table__cell">2</td>
-                <td className="wt-orders-table__cell">
-                  <button className="wt-orders-table__button">less</button>
-                  <button className="wt-orders-table__button">more</button>
-                  <button className="wt-orders-table__button">cancel</button>
-                </td>
-              </tr>
-              <tr className="wt-orders-table__row">
-                <td className="wt-orders-table__cell">
-                  <img src="" alt="" className="wt-orders-table__image" />
-                </td>
-                <td className="wt-orders-table__cell">
-                  <h5 className="wt-orders-table__price">$3</h5>
-                </td>
-                <td className="wt-orders-table__cell">2</td>
-                <td className="wt-orders-table__cell">
-                  <button className="wt-orders-table__button">less</button>
-                  <button className="wt-orders-table__button">more</button>
-                  <button className="wt-orders-table__button">cancel</button>
-                </td>
-              </tr>
-              <tr className="wt-orders-table__row">
-                <td className="wt-orders-table__cell">
-                  <img src="" alt="" className="wt-orders-table__image" />
-                </td>
-                <td className="wt-orders-table__cell">
-                  <h5 className="wt-orders-table__price">$3</h5>
-                </td>
-                <td className="wt-orders-table__cell">2</td>
-                <td className="wt-orders-table__cell">
-                  <button className="wt-orders-table__button">less</button>
-                  <button className="wt-orders-table__button">more</button>
-                  <button className="wt-orders-table__button">cancel</button>
-                </td>
-              </tr>
-            </tbody>
+  {selectedProducts.map((product, index) => (
+    <tr className="wt-orders-table__row" key={index}>
+      <td className="wt-orders-table__cell">
+        <img src={product.image} alt={`Product ${product.name}`} className="wt-orders-table__image" />
+      </td>
+      <td className="wt-orders-table__cell">
+        <h5 className="wt-orders-table__price">{product.price}</h5>
+      </td>
+      <td className="wt-orders-table__cell">1</td>
+      <td className="wt-orders-table__cell">
+        <button className="wt-orders-table__button">less</button>
+        <button className="wt-orders-table__button">more</button>
+        <button className="wt-orders-table__button">cancel</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
           </table>
         </div>
         <p className="wt-orders-table__total">total:</p>

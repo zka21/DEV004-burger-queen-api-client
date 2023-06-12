@@ -90,6 +90,8 @@
     flex-direction: column;
     width: 50%;
     align-items: center;
+    height: 500px;
+    overflow: auto;
   }
 
   .wt-orders-table__table {
