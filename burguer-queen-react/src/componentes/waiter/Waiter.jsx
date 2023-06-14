@@ -55,8 +55,26 @@ const Waiter = ({ token }) => {
   }
 
   const addProductToOrder = (product) => {
-    setSelectedProducts((prevProducts) => [...prevProducts, product]);
+    //busca el indice del producto existente en el pedido
+    const existingProductIndex = selectedProducts.findIndex(
+      (selectedProduct) => selectedProduct.id === product.id
+    );
+    if (existingProductIndex !== -1) {
+      //El producto ya esta en el pedido y es diferente a -1, entonces se incrementa la cantidad
+      const updateProducts = [...selectedProducts];
+      updateProducts[existingProductIndex].amount += 1;
+      //actualiza la lista de productos seleccionados
+      setSelectedProducts(updatedProducts);
+    } else {
+      //agrega un nuevo producto al pedido
+      setSelectedProducts((prevProducts) => [
+        ...prevProducts,
+        { ...product, amount: 1 },
+      ]);
+    }
   };
+
+
   return (
     <>
       <NavWaiter />
@@ -130,7 +148,9 @@ const Waiter = ({ token }) => {
                             {product.price}
                           </h5>
                         </td>
-                        <td className="wt-orders-table__cell">1</td>
+                        <td className="wt-orders-table__cell">
+                          {product.amount}
+                        </td>
                         <td className="wt-orders-table__cell">
                           <button className="wt-orders-table__button">
                             less
