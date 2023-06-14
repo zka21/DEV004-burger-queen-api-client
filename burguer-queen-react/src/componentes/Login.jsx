@@ -15,7 +15,7 @@ const Login = ({ updateToken }) => {
     try {
       
       const data = await httpLogin(user, password);
-
+      localStorage.setItem("token",data.accessToken)
       updateToken(data.accessToken)
       //segun el rol se navegara
       if (data.user.role === 'admin') return navigate('/administrador/employed')

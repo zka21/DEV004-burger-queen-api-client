@@ -34,7 +34,7 @@ const Administrador = ({ token }) => {
   }
 
   async function readEmployed() {
-    setEmployed(await httpGetEmployed(token));
+    setEmployed(await httpGetEmployed(localStorage.getItem("token")));
   }
 
   useEffect(() => {

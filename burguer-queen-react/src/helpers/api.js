@@ -62,6 +62,7 @@ export async function httpGetProducts(token) {
         'Authorization': `Bearer ${token}`,
       },
     });
+    // console.log(response.data);
     return response.data;
   } catch(err) {
     console.log(err)
