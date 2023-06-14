@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { httpLogin } from "../helpers/api";
 
 const Login = ({ updateToken }) => {
+
+  document.body.classList.add('login-background');
+  document.body.classList.remove('others-background');
   //para navegar a rutas
   const navigate = useNavigate();
   //Guardar la entrada del usuario  y password

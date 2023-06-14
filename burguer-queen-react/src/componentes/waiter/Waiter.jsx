@@ -8,6 +8,8 @@ import {
 import { DateTime } from "luxon";
 
 const Waiter = ({ token }) => {
+  document.body.classList.add('others-background');
+  document.body.classList.remove('login-background');
   const [customer, setCustomer] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
   // const [productsOrder, setProductsOrder] = useState([])
@@ -61,8 +63,8 @@ const Waiter = ({ token }) => {
     );
     if (existingProductIndex !== -1) {
       //El producto ya esta en el pedido y es diferente a -1, entonces se incrementa la cantidad
-      const updateProducts = [...selectedProducts];
-      updateProducts[existingProductIndex].amount += 1;
+      const updatedProducts = [...selectedProducts];
+      updatedProducts[existingProductIndex].amount += 1;
       //actualiza la lista de productos seleccionados
       setSelectedProducts(updatedProducts);
     } else {
