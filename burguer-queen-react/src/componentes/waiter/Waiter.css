@@ -79,9 +79,7 @@
     margin-right: 10px;
     font-family: 'Roboto';
     font-style: normal;
-    /* font-weight: 200; */
     font-size: 15px;
-    /* line-height: 20px; */
     text-align: center;
     color: #FFFFFF;
     width: 159.69px;
@@ -251,6 +249,16 @@
 }
 
 .wt-orders-table__submit-button {
+  margin-right: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 15px;
+  text-align: center;
+  color: #FFFFFF;
+  width: 159.69px;
+  height: 46px;
+  background: #724C11;
+  border-radius: 16px;
   margin-top: 10px;
 }
 @media (min-width: 1024px) and (max-height: 768px) {
