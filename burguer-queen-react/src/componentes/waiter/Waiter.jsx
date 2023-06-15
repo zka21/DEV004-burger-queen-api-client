@@ -58,13 +58,13 @@ const Waiter = ({ token }) => {
 
   const addProductToOrder = (product) => {
     //busca el indice del producto existente en el pedido
-    const existingProductIndex = selectedProducts.findIndex(
+    const existToProducts = selectedProducts.findIndex(
       (selectedProduct) => selectedProduct.id === product.id
     );
-    if (existingProductIndex !== -1) {
+    if (existToProducts !== -1) {
       //El producto ya esta en el pedido y es diferente a -1, entonces se incrementa la cantidad
       const updatedProducts = [...selectedProducts];
-      updatedProducts[existingProductIndex].amount += 1;
+      updatedProducts[existToProducts].amount += 1;
       //actualiza la lista de productos seleccionados
       setSelectedProducts(updatedProducts);
     } else {
@@ -76,7 +76,45 @@ const Waiter = ({ token }) => {
     }
   };
 
-
+  const decrementProduct = (product) => {
+    if (product.amount > 1) {
+      // El producto ya está en el pedido y su cantidad es mayor que 1, entonces se disminuye la cantidad
+      const updatedProducts = selectedProducts.map((selectedProduct) => {
+        if (selectedProduct.id === product.id) {
+          return {
+            ...selectedProduct,
+            amount: selectedProduct.amount - 1,
+          };
+        }
+        return selectedProduct;
+      });
+      // Actualiza la lista de productos seleccionados
+      setSelectedProducts(updatedProducts);
+    } else {
+      // Si la cantidad es igual o menor que 1, puedes decidir qué hacer aquí, como eliminar el producto del pedido o mostrar un mensaje de error.
+      alert('La cantidad mínima del producto es 1');
+    }
+  };
+  
+  const increaseProduct = (product) => {
+    if (product.amount >= 1 ) {
+      // El producto ya está en el pedido y su cantidad es mayor que 1, entonces se disminuye la cantidad
+      const updatedProducts = selectedProducts.map((selectedProduct) => {
+        if (selectedProduct.id === product.id) {
+          return {
+            ...selectedProduct,
+            amount: selectedProduct.amount + 1,
+          };
+        }
+        return selectedProduct;
+      });
+      // Actualiza la lista de productos seleccionados
+      setSelectedProducts(updatedProducts);
+    } else {
+      // Si la cantidad es igual o menor que 1, puedes decidir qué hacer aquí, como eliminar el producto del pedido o mostrar un mensaje de error.
+      alert('La cantidad mínima del producto es 1');
+    }
+  };
   return (
     <>
       <NavWaiter />
@@ -154,13 +192,13 @@ const Waiter = ({ token }) => {
                           {product.amount}
                         </td>
                         <td className="wt-orders-table__cell">
-                          <button className="wt-orders-table__button">
+                          <button type="button" className="wt-orders-table__button" onClick={() => decrementProduct(product)}>
                             less
                           </button>
-                          <button className="wt-orders-table__button">
+                          <button type="button" className="wt-orders-table__button" onClick={() => increaseProduct(product)}>
                             more
                           </button>
-                          <button className="wt-orders-table__button">
+                          <button type="button"  className="wt-orders-table__button">
                             cancel
                           </button>
                         </td>
