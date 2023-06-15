@@ -106,8 +106,3 @@ img{/* banner 1 */
   background-color: #724C11;
   color: #fdfffd;
 }
-@media (max-width: 1133px) and (orientation: portrait) {
-  /* Estilos específicos para tablets en posición vertical */
-  /* Aquí puedes agregar tus estilos */
-
-}
