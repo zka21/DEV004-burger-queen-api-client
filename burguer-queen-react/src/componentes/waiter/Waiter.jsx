@@ -67,6 +67,7 @@ const Waiter = ({ token }) => {
       //El producto ya esta en el pedido y es diferente a -1, entonces se incrementa la cantidad
       const updatedProducts = [...selectedProducts];
       updatedProducts[existToProducts].amount += 1;
+      updatedProducts[existToProducts].price += product.price;
       //actualiza la lista de productos seleccionados
       setSelectedProducts(updatedProducts);
     } else {
@@ -83,9 +84,12 @@ const Waiter = ({ token }) => {
       // El producto ya está en el pedido y su cantidad es mayor que 1, entonces se disminuye la cantidad
       const updatedProducts = selectedProducts.map((selectedProduct) => {
         if (selectedProduct.id === product.id) {
+          const updatedAmount = selectedProduct.amount - 1;
+          const updatedPrice = selectedProduct.price - selectedProduct.price / selectedProduct.amount;
           return {
             ...selectedProduct,
-            amount: selectedProduct.amount - 1,
+            amount: updatedAmount,
+            price: updatedPrice,
           };
         }
         return selectedProduct;
@@ -103,9 +107,12 @@ const Waiter = ({ token }) => {
       // El producto ya está en el pedido y su cantidad es mayor que 1, entonces se disminuye la cantidad
       const updatedProducts = selectedProducts.map((selectedProduct) => {
         if (selectedProduct.id === product.id) {
+          const updatedAmount = selectedProduct.amount + 1;
+          const updatedPrice = selectedProduct.price + selectedProduct.price / selectedProduct.amount;
           return {
             ...selectedProduct,
-            amount: selectedProduct.amount + 1,
+            amount: updatedAmount,
+            price: updatedPrice,
           };
         }
         return selectedProduct;
