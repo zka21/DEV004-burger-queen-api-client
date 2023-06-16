@@ -29,6 +29,7 @@
     font-weight: bold;
   }
   
+  
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -170,6 +171,18 @@
   .wt-orders-table__button {
     padding: 5px 10px;
     margin-right: 5px;
+  }
+
+  .buttonDecrement:active{
+    background-color: #efe9458a;
+  }
+
+  .buttonIncrease:active{
+    background-color: rgba(0, 128, 0, 0.42);
+  }
+
+  .buttonCancel:active{
+    background-color: rgba(232, 43, 43, 0.557);
   }
   
   .wt-orders-table__row:nth-child(even) {

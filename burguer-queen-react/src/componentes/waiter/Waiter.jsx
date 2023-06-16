@@ -6,6 +6,8 @@ import {
   httpGetOrder,
 } from "../../helpers/api.js";
 import { DateTime } from "luxon";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane, faMugSaucer, faUtensils, faPlus, faMinus, faTrash} from '@fortawesome/free-solid-svg-icons'
 
 const Waiter = ({ token }) => {
   document.body.classList.add('others-background');
@@ -121,9 +123,9 @@ const Waiter = ({ token }) => {
       <main className="wt-main-container">
         <section className="wt-products-section">
           <div className="wt-products_section__buttons">
-            <button className="wt-products-section__button">Breakfast</button>
+            <button className="wt-products-section__button"><FontAwesomeIcon icon={faMugSaucer} style={{color: "#e1d76b",}} /> Breakfast</button>
             <button className="wt-products-section__button">
-              Lunch & Dinner
+            <FontAwesomeIcon icon={faUtensils} style={{color: "#e1d76b",}} /> Lunch & Dinner
             </button>
           </div>
           <div className="wt-products-section__content">
@@ -192,14 +194,14 @@ const Waiter = ({ token }) => {
                           {product.amount}
                         </td>
                         <td className="wt-orders-table__cell">
-                          <button type="button" className="wt-orders-table__button" onClick={() => decrementProduct(product)}>
-                            less
+                          <button type="button" className="wt-orders-table__button buttonDecrement" onClick={() => decrementProduct(product)}>
+                          <FontAwesomeIcon icon={faMinus} size="sm" style={{color: "#5d6979",}} /> 
                           </button>
-                          <button type="button" className="wt-orders-table__button" onClick={() => increaseProduct(product)}>
-                            more
+                          <button type="button" className="wt-orders-table__button buttonIncrease" onClick={() => increaseProduct(product)}>
+                            <FontAwesomeIcon icon={faPlus} size="sm" style={{color: "#5d6979",}} />
                           </button>
-                          <button type="button"  className="wt-orders-table__button">
-                            cancel
+                          <button type="button"  className="wt-orders-table__button buttonCancel">
+                          <FontAwesomeIcon icon={faTrash} size="sm" style={{color: "#767676",}} /> 
                           </button>
                         </td>
                       </tr>
@@ -210,7 +212,7 @@ const Waiter = ({ token }) => {
             </div>
             <p className="wt-orders-table__total">total:</p>
             <button type="submit" className="wt-orders-table__submit-button">
-              Send the order
+            <FontAwesomeIcon icon={faPaperPlane} beat style={{color: "#e1d76b",}} /> Send the order
             </button>
           </form>
         </section>
