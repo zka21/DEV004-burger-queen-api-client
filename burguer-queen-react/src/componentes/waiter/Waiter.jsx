@@ -134,9 +134,6 @@ const Waiter = ({ token }) => {
   };
   //funcion para sumar todas las cantidades de productos seleccionados 
 
-//   const sumary = (product)=>{
-// const totalSumary =  
-//   }
   return (
     <>
       <NavWaiter />
@@ -230,7 +227,7 @@ const Waiter = ({ token }) => {
                 </div>
               </table>
             </div>
-            <p className="wt-orders-table__total">total:</p>
+            <p className="wt-orders-table__total" >total: {selectedProducts.reduce((acumulador, elemento) => acumulador +  elemento.price, 0)}</p>
             <button type="submit" className="wt-orders-table__submit-button">
             <FontAwesomeIcon icon={faPaperPlane} beat style={{color: "#e1d76b",}} /> Send the order
             </button>
