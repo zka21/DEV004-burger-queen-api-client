@@ -140,6 +140,8 @@
   .wt-orders-table__header-container{
     margin-bottom: 5%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .wt-orders-table__table {
     width: 100%;
@@ -194,7 +196,7 @@
 .wt-orders-table{
   background-color: rgb(255, 255, 255);
   padding: 30px 40px;
-  width: 70%;
+  width: 50%;
   border-radius: 20px;
 }
 /* .wt-orders-table__submit-button{
@@ -208,9 +210,9 @@
 }
 
 .wt-orders-table__input {
+  border:  none;
   display: inline-block;
   vertical-align: middle;
-  width: 255px;
     height: 26px;
     background: #F4F3E4;
     border-radius: 5px;
@@ -285,5 +287,11 @@
     max-height: 200px;
     overflow-y: auto;
     width: 100%;
+}
+.wt-orders-table {
+  background-color: rgb(255, 255, 255);
+  padding: 30px 40px;
+  width: 60%;
+  border-radius: 20px;
 }
 }

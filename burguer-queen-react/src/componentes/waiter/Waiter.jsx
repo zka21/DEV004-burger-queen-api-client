@@ -117,6 +117,19 @@ const Waiter = ({ token }) => {
       alert('La cantidad mínima del producto es 1');
     }
   };
+  //fUNCION para eliminar un producto y actualizar la lista solo 
+  const deleteProduct = (product) => {
+    const updatedProducts = selectedProducts.filter((selectedProduct) => {
+      return selectedProduct.id !== product.id;
+    });
+  
+    setSelectedProducts(updatedProducts);
+  };
+  //funcion para sumar todas las cantidades de productos seleccionados 
+
+//   const sumary = (product)=>{
+// const totalSumary =  
+//   }
   return (
     <>
       <NavWaiter />
@@ -200,7 +213,7 @@ const Waiter = ({ token }) => {
                           <button type="button" className="wt-orders-table__button buttonIncrease" onClick={() => increaseProduct(product)}>
                             <FontAwesomeIcon icon={faPlus} size="sm" style={{color: "#5d6979",}} />
                           </button>
-                          <button type="button"  className="wt-orders-table__button buttonCancel">
+                          <button type="button"  className="wt-orders-table__button buttonCancel" onClick={() => deleteProduct(product)}>
                           <FontAwesomeIcon icon={faTrash} size="sm" style={{color: "#767676",}} /> 
                           </button>
                         </td>
