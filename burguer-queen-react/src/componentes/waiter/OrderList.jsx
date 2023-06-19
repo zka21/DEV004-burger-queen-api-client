@@ -19,42 +19,50 @@ return(
 <>
 <NavWaiter/>
 <main className="ordersList-main">
-{order?.map((orderlist) => (
-<div className="card" key={orderlist.id}>
-    <h2>Tarjeta de Pedido</h2>
-    <div className="info">
-      <strong>Cliente:</strong> {orderlist.client}
-    </div>
-    <div className="info">
-      <strong>Fecha y Hora:</strong> {orderlist.dateEntry}
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Producto</th>
-          <th>Cantidad</th>
-          <th>Precio Unitario</th>
-        </tr>
-      </thead>
-      <tbody>
-        {orderlist.products?.map((product , index )=> (
-        <><tr key={index}>
-            <td>{product.name}</td>
-            <td>{product.amount}</td>
-            <td>{product.price}</td>
-          </tr></>
-        ))}
-      </tbody>
-      <tfoot>
-        <tr>
-          <td  className="total">Total del Pedido:</td>
-          <td className="total">$35.00</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-))}
+  {order
+    ?.sort((a, b) => new Date(b.dateEntry) - new Date(a.dateEntry))
+    .map((orderlist) => (
+      <div className="card" key={orderlist.id}>
+        <h2>Tarjeta de Pedido</h2>
+        <div className="info">
+          <strong>Cliente:</strong> {orderlist.client}
+        </div>
+        <div className="info">
+          <strong>Fecha y Hora:</strong> {orderlist.dateEntry}
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orderlist.products?.map((product, index) => (
+              <tr key={index}>
+                <td>{product.name}</td>
+                <td>{product.amount}</td>
+                <td>{product.price}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td className="total">Total del Pedido:</td>
+              <td className="total">
+                ${orderlist.products.reduce(
+                  (acumulador, elemento) => acumulador + elemento.price,
+                  0
+                )}
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    ))}
 </main>
+
 
 </>
 
