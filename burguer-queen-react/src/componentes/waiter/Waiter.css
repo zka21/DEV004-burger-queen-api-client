@@ -276,6 +276,41 @@
   border-radius: 16px;
   margin-top: 10px;
 }
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+h2 {
+  margin-top: 0;
+}
+.info {
+  margin-bottom: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  text-align: left;
+}
+.total {
+  font-weight: bold;
+}
+.ordersList-main{
+    display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+align-items: center;
+font-family: "Rubik";
+margin-top: 4%;
+margin-bottom: 5%;
+}
 @media (min-width: 1024px) and (max-height: 768px) {
   /* Estilos específicos para dispositivos en modo horizontal */
   /* Aquí puedes agregar tus estilos */
