@@ -69,21 +69,20 @@ export async function httpGetProducts(token) {
   }
 }
 
-// export async function httpDeleteProducts(token) {
-//   try {
-//     const response = await axios.get(`${dominiolocal}/products`, {
-//       headers: {
+export async function httpUpdateOrders(token, ordersid) {
+  try {
+    const response = await axios.delete(`${dominiolocal}/orders`, ordersid, {
+      headers: {
       
-//         'Authorization': `Bearer ${token}`,
-//       },
-//     });
-//     // console.log(response.data);
-//     return response.data;
-//   } catch(err) {
-//     console.log(err)
-//   }
-// }
-
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    // console.log(response.data);
+    return response.data;
+  } catch(err) {
+    console.log(err)
+  }
+}
 
 export async function httpCreateOrder(token, product){
   try {

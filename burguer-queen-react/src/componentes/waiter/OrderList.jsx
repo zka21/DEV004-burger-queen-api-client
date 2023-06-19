@@ -56,6 +56,7 @@ return(
                   0
                 )}
               </td>
+              <td> <button>Cancelar</button></td>
             </tr>
           </tfoot>
         </table>
