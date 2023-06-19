@@ -4,7 +4,6 @@ import { NavWaiter } from "./NavWaiter.jsx";
 
 const ListOrders = ({token}) => {
   const [order, setOrder] = useState([]);
-  const [product, setProducts] = useState([]);
 
     async  function readOrders(){
         setOrder( await httpGetOrder( localStorage.getItem("token")))
@@ -43,11 +42,7 @@ return(
             <td>{product.name}</td>
             <td>{product.amount}</td>
             <td>{product.price}</td>
-          </tr><tr>
-              <td>{orderlist.name}</td>
-              <td>1</td>
-              <td>{orderlist.price}</td>
-            </tr></>
+          </tr></>
         ))}
       </tbody>
       <tfoot>
