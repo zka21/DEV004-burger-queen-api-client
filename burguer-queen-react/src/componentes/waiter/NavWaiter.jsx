@@ -13,7 +13,7 @@ export const NavWaiter  = () => {
             </figure>
             <nav>  
               <ul>
-                 <li><a href="">NEW ORDER </a></li>
+                 <Link className="nav-link" to={`/waiter/orders`}>NEW ORDER </Link>
                  <Link className="nav-link" to={`/waiter/orders/list`}>ORDER LIST </Link>
               </ul>
             </nav>
