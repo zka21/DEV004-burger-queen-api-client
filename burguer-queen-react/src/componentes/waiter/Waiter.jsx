@@ -34,7 +34,7 @@ const Waiter = ({ token }) => {
     // si alguno de los 3 datos no tiene valor no se permite continuar
     if (!customer) return alert("You must enter name of custumer");
 
-    const dateEntry = DateTime.now().toISO();
+    const dateEntry =  DateTime.now().toFormat('dd/MM/yyyy HH:mm');
     console.log(dateEntry);
 
     const newOrder = {

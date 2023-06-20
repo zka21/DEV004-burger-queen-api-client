@@ -1,6 +1,6 @@
 /* Estilos para el encabezado */
 header {
-  position: fixed;
+  position: sticky;
   display: flex;
   top: 0;
   left: 0;
