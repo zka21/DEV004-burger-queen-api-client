@@ -3,6 +3,7 @@ import Waiter from "./componentes/waiter/Waiter.jsx";
 import Administrador from "./componentes/administrator/Employed.jsx";
 import Login from "./componentes/Login.jsx";
 import ListOrders from "./componentes/waiter/OrderList.jsx";
+import ListOrden from "./componentes/chef/ListOrden.jsx";
 import { useState } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import './App.css'
@@ -20,6 +21,7 @@ function App() {
         <Route path="/chef" element={<Chef />} />
         <Route path="/administrador/employed" element={<Administrador token={token} />} />
         <Route path="/waiter/orders/list" element={<ListOrders  token={token} />} />
+        <Route path="/chef/orders/list" element={<ListOrden token={token}/>} />
       </Routes>
     </Router>
   );

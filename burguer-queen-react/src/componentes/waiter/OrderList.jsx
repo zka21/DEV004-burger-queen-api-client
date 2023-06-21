@@ -48,7 +48,7 @@ return(
             ))}
           </tbody>
           <tfoot>
-          <tr>
+            <tr>
               <td className="total">Total del Pedido:</td>
               <td className="total">
                 ${orderlist.products.reduce(
@@ -56,15 +56,7 @@ return(
                   0
                 )}
               </td>
-            </tr>
-            <tr>
-              <td>
-              {orderlist.status === "pending" ? (
-                  <button>Cancelar</button>
-                ) : (
-                  <button>Entregar</button>
-                )}
-              </td>
+              <td> <button>Cancelar</button></td>
             </tr>
           </tfoot>
         </table>
