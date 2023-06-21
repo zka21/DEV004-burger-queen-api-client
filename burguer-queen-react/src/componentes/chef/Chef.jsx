@@ -52,7 +52,7 @@ export default function Chef() {
                 <tfoot>
                   <tr>
                     <td>
-                  <button className="wt-orders-table__submit-button">Listo</button>
+                  <button className="chef-orders-table__submit-button">Listo</button>
                     </td>
                   </tr>
                 </tfoot>

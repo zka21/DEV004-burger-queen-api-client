@@ -37,3 +37,16 @@
   .chef-btn:hover {
     background-color: #555;
   }
+ .chef-orders-table__submit-button{
+  margin-right: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 15px;
+  text-align: center;
+  color: #FFFFFF;
+  width: 130px;
+  height: 40px;
+  background: #724C11;
+  border-radius: 16px;
+  margin-top: 10px;
+ }

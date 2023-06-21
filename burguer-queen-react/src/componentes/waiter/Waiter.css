@@ -1,4 +1,8 @@
 /* Estilos para el logo */
+@font-face {
+  font-family: 'Hey Comic';
+  src: url('../fonts/Hey Comic.ttf') format('opentype');
+}
 .waiter-logoburger-img {
     width: 200px;
     height: 200px;
@@ -288,6 +292,7 @@
   overflow: auto;
 }
 .card h2 {
+  font-family: "Hey Comic";
   margin-top: 0;
   text-align: center;
 }
