@@ -21,10 +21,10 @@ export async function httpLogin(usuario, contrasena) {
     // devuelvo la data si todo va bien
     return response.data;
   } catch (error) {
-    return "error";
+    return console.log(error);
   }
 }
-
+// Función para agregar un empleado mediante una solicitud HTTP POST
 export async function httpAddEmployed(token, user) {
   try {
     const response = await axios.post(`${dominiolocal}/users`, user, {
@@ -33,82 +33,89 @@ export async function httpAddEmployed(token, user) {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
+    return response.data; // Devuelve los datos de la respuesta HTTP
   } catch (err) {
-    return console.log(err);
+    return console.log(err); // Manejo de errores: Imprimir el error en la consola
   }
 }
 
+// Función para obtener información de empleados mediante una solicitud HTTP GET
 export async function httpGetEmployed(token) {
   try {
     const response = await axios.get(`${dominiolocal}/users`, {
-      // autorization envio el token de autorizacion
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
+    return response.data; // Devuelve los datos de la respuesta HTTP
   } catch (err) {
-    console.log(err);
+    console.log(err); // Manejo de errores: Imprimir el error en la consola
   }
 }
 
+// Función para obtener información de productos mediante una solicitud HTTP GET
 export async function httpGetProducts(token) {
   try {
     const response = await axios.get(`${dominiolocal}/products`, {
       headers: {
-      
         'Authorization': `Bearer ${token}`,
       },
     });
     // console.log(response.data);
-    return response.data;
+    return response.data; // Devuelve los datos de la respuesta HTTP
   } catch(err) {
-    console.log(err)
-  }
-}
-
-export async function httpUpdateOrders(token, ordersid) {
-  try {
-    const response = await axios.delete(`${dominiolocal}/orders`, ordersid, {
-      headers: {
-      
-        'Authorization': `Bearer ${token}`,
-      },
-    });
-    // console.log(response.data);
-    return response.data;
-  } catch(err) {
-    console.log(err)
+    console.log(err); // Manejo de errores: Imprimir el error en la consola
   }
 }
 
 export async function httpCreateOrder(token, product){
   try {
+    // Realiza una solicitud HTTP POST para crear una orden
     const response = await axios.post(`${dominiolocal}/orders`, product, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       }
     });
-    return response.data
-  }catch(err) {
+    // Devuelve los datos de la respuesta
+    return response.data;
+  } catch(err) {
+    // Si ocurre un error, se muestra en la consola
     console.log(err);
   }
 }
 
 export async function httpGetOrder(token){
   try {
+    // Realiza una solicitud HTTP GET para obtener una orden
     const response = await axios.get(`${dominiolocal}/orders`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       }
     });
-    return response.data
-  }catch(err) {
+    // Devuelve los datos de la respuesta
+    return response.data;
+  } catch(err) {
+    // Si ocurre un error, se muestra en la consola
     console.log(err);
   }
 }
 
+
+// export async function httpUpdateOrders(token, ordersid) {
+//   try {
+//     // Realiza una solicitud HTTP DELETE para actualizar una orden
+//     const response = await axios.delete(`${dominiolocal}/orders`, ordersid, {
+//       headers: {
+//         'Authorization': `Bearer ${token}`,
+//       },
+//     });
+//     // Devuelve los datos de la respuesta
+//     return response.data;
+//   } catch(err) {
+//     // Si ocurre un error, se muestra en la consola
+//     console.log(err);
+//   }
+// }

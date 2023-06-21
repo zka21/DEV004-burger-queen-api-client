@@ -6,45 +6,47 @@ import { NavAdmin } from './NavAdmin';
 const Administrador = ({ token }) => {
   document.body.classList.add('others-background');
   document.body.classList.remove('login-background');
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
-  const [employees, setEmployed] = useState([]);
+  // Definición de estados mediante el hook useState
+const [email, setEmail] = useState(""); // Estado para almacenar el valor del correo electrónico
+const [password, setPassword] = useState(""); // Estado para almacenar el valor de la contraseña
+const [role, setRole] = useState(""); // Estado para almacenar el valor del rol
+const [employees, setEmployed] = useState([]); // Estado para almacenar los empleados
 
-  async function saveEmployed(e) {
-    // evita la recarga de la pagina - evita el comportamiento normal del evento
-    e.preventDefault();
-    // si alguno de los 3 datos no tiene valor no se permite continuar
-    if (!email) return alert("You must enter your email")
-    if (!password) return alert("You must enter a password")
-    if (!role) return alert("You must select a role")
-    const newUser = {
-      "email": email,
-      "password": password,
-      "role": role
-    }
-    try {
+async function saveEmployed(e) {
+  e.preventDefault(); // Evita la recarga de la página - evita el comportamiento normal del evento
 
-      await httpAddEmployed(token, newUser);
-      console.log("Se inserto al empleado con exito")
-      //segun el rol se navegar
+  // Verificación de datos obligatorios
+  if (!email) return alert("You must enter your email");
+  if (!password) return alert("You must enter a password");
+  if (!role) return alert("You must select a role");
 
-    } catch {
-      console.log('No se pudo agregar al empleado');
-    }
+  // Creación del objeto newUser con los datos ingresados
+  const newUser = {
+    "email": email,
+    "password": password,
+    "role": role
+  };
 
+  try {
+    await httpAddEmployed(token, newUser); // Llamada a la función httpAddEmployed para agregar un empleado
+    console.log("Se inserto al empleado con exito");
+    // Según el rol, se puede navegar a una página específica
+  } catch {
+    console.log('No se pudo agregar al empleado');
   }
+}
 
-  async function readEmployed() {
-    setEmployed(await httpGetEmployed(localStorage.getItem("token")));
-  }
+async function readEmployed() {
+  setEmployed(await httpGetEmployed(localStorage.getItem("token"))); // Llamada a la función httpGetEmployed para obtener los empleados
+}
 
-  useEffect(() => {
-    const read = async () => {
-      await readEmployed();
-    };
-    read();
-  },)
+// Utilización del hook useEffect para ejecutar la función read al cargar el componente
+useEffect(() => {
+  const read = async () => {
+    await readEmployed();
+  };
+  read();
+}, []);
 
 
   return (

@@ -5,18 +5,21 @@ import { httpGetOrder } from "../../helpers/api.js"
 export default function Chef() {
   document.body.classList.add("others-background");
   document.body.classList.remove("login-background");
-  const [order, setOrder] = useState([]);
+// Definición del estado mediante el hook useState
+const [order, setOrder] = useState([]); // Estado para almacenar las órdenes
 
-    async  function readOrders(){
-        setOrder( await httpGetOrder( localStorage.getItem("token")))
-      }
-    
-      useEffect(() => {
-        const read = async () => {
-            await readOrders();
-        };
-        read();
-      }, [])
+async function readOrders() {
+  setOrder(await httpGetOrder(localStorage.getItem("token"))); // Llamada a la función httpGetOrder para obtener las órdenes
+}
+
+// Utilización del hook useEffect para ejecutar la función read al cargar el componente
+useEffect(() => {
+  const read = async () => {
+    await readOrders();
+  };
+  read();
+}, []);
+
   return (
     <>
       <NavChef />
