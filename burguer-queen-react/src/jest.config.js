@@ -1,4 +1,6 @@
 export default {
-  testEnvironment: 'jest-environment-jsdom',
-  setupFiles: ['./jest.setup.js']
-}
+  testEnvironment: 'jsdom',
+  transform: {
+      '^.+\\.jsx?$': 'babel-jest', // transpile mjs, mts, js, ts files
+  },
+};
