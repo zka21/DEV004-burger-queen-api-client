@@ -2,11 +2,11 @@ import Chef from "./componentes/chef/Chef.jsx";
 import Waiter from "./componentes/waiter/Waiter.jsx";
 import Administrador from "./componentes/administrator/Employed.jsx";
 import Login from "./componentes/Login.jsx";
+import ListOrden from "./componentes/chef/ListsOrder.jsx";
 import ListOrders from "./componentes/waiter/OrderList.jsx";
-import ListOrden from "./componentes/chef/ListOrden.jsx";
 import { useState } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import './App.css'
+import './App.css';
 
 function App() {
   const [token, setToken] = useState('')

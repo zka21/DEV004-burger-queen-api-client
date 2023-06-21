@@ -277,13 +277,19 @@
   margin-top: 10px;
 }
 .card {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  background: white;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 40px;
   margin-bottom: 20px;
+  height: 282px;
+  width: 396px;
+  overflow: auto;
 }
-h2 {
+.card h2 {
   margin-top: 0;
+  text-align: center;
 }
 .info {
   margin-bottom: 10px;

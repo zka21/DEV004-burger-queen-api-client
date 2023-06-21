@@ -3,6 +3,8 @@
 import { NavWaiter } from "./NavWaiter.jsx";
 
 const ListOrders = ({token}) => {
+  document.body.classList.add('others-background');
+  document.body.classList.remove('login-background');
   const [order, setOrder] = useState([]);
 
     async  function readOrders(){
@@ -56,7 +58,11 @@ return(
                   0
                 )}
               </td>
-              <td> <button>Cancelar</button></td>
+              <td>     {orderlist.status === "pending" ? (
+                  <button className="wt-orders-table__submit-button">Cancelar</button>
+                ) : (
+                  <button className="wt-orders-table__submit-button">Entregar</button>
+                )}</td>
             </tr>
           </tfoot>
         </table>

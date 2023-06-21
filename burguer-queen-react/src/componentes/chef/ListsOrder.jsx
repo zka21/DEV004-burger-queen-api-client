@@ -1,28 +1,28 @@
-import { NavChef } from "./NavChef";
-import { useState, useEffect } from "react";
+import { NavChef } from "./NavChef.jsx";
+import { useEffect , useState } from "react";
 import { httpGetOrder } from "../../helpers/api.js"
 
-export default function Chef() {
-  document.body.classList.add("others-background");
-  document.body.classList.remove("login-background");
+const ListOrden = ({token}) => {
+  document.body.classList.add('others-background');
+  document.body.classList.remove('login-background');
   const [order, setOrder] = useState([]);
 
-    async  function readOrders(){
-        setOrder( await httpGetOrder( localStorage.getItem("token")))
-      }
-    
-      useEffect(() => {
-        const read = async () => {
-            await readOrders();
-        };
-        read();
-      }, [])
-  return (
-    <>
-      <NavChef />
-      <main className="ordersList-main">
+  async  function readOrders(){
+    setOrder( await httpGetOrder( localStorage.getItem("token")))
+  }
+
+  useEffect(() => {
+    const read = async () => {
+        await readOrders();
+    };
+    read();
+  }, [])
+    return (
+        <>
+          <NavChef/>
+          <main className="ordersList-main">
         {order
-          ?.filter((orderlist) => orderlist.status === "pending")
+          ?.filter((orderlist) => orderlist.status === "delivered")
           .sort((a, b) => new Date(b.dateEntry) - new Date(a.dateEntry))
           .map((orderlist) => (
             <div className="card" key={orderlist.id}>
@@ -49,17 +49,12 @@ export default function Chef() {
                     </tr>
                   ))}
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <td>
-                  <button className="wt-orders-table__submit-button">Listo</button>
-                    </td>
-                  </tr>
-                </tfoot>
               </table>
             </div>
           ))}
       </main>
-    </>
-  );
+        </>
+      )
 }
+
+export default ListOrden;

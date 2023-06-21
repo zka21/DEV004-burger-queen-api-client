@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { NavAdmin } from './NavAdmin';
 
 const Administrador = ({ token }) => {
+  document.body.classList.add('others-background');
+  document.body.classList.remove('login-background');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
@@ -88,7 +90,7 @@ const Administrador = ({ token }) => {
               <option value="chef">Chef</option>
               <option value="waiter">Waiter</option>
             </select>
-            <button type="submit">Add Employed</button>
+            <button type="submit" className="wt-orders-table__submit-button" >Add Employed</button>
           </form>
         </aside>
       </main>
