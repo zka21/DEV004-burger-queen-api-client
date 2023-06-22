@@ -1,8 +1,7 @@
 import { NavChef } from "./NavChef";
 import { useState, useEffect } from "react";
 import { httpGetOrder } from "../../helpers/api.js"
-
-export default function Chef() {
+const  Chef = ({ token }) => {
   document.body.classList.add("others-background");
   document.body.classList.remove("login-background");
 // Definición del estado mediante el hook useState
@@ -66,3 +65,5 @@ useEffect(() => {
     </>
   );
 }
+
+export default Chef

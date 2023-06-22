@@ -26,7 +26,7 @@ function App() {
         <Route path="/waiter/orders" element={<Waiter token={token} />} />
 
         {/* Ruta para la página del chef */}
-        <Route path="/chef" element={<Chef />} />
+        <Route path="/chef" element={<Chef token={token}/>} />
 
         {/* Ruta para la página de empleados del administrador */}
         <Route path="/administrador/employed" element={<Administrador token={token} />} />
