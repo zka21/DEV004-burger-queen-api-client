@@ -4,49 +4,45 @@ import { useState, useEffect } from "react";
 import { NavAdmin } from './NavAdmin';
 
 const Administrador = ({ token }) => {
-  document.body.classList.add('others-background');
-  document.body.classList.remove('login-background');
-  // Definición de estados mediante el hook useState
-const [email, setEmail] = useState(""); // Estado para almacenar el valor del correo electrónico
-const [password, setPassword] = useState(""); // Estado para almacenar el valor de la contraseña
-const [role, setRole] = useState(""); // Estado para almacenar el valor del rol
-const [employees, setEmployed] = useState([]); // Estado para almacenar los empleados
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [employees, setEmployed] = useState([]);
 
-async function saveEmployed(e) {
-  e.preventDefault(); // Evita la recarga de la página - evita el comportamiento normal del evento
+  async function saveEmployed(e) {
+    // evita la recarga de la pagina - evita el comportamiento normal del evento
+    e.preventDefault();
+    // si alguno de los 3 datos no tiene valor no se permite continuar
+    if (!email) return alert("You must enter your email")
+    if (!password) return alert("You must enter a password")
+    if (!role) return alert("You must select a role")
+    const newUser = {
+      "email": email,
+      "password": password,
+      "role": role
+    }
+    try {
 
-  // Verificación de datos obligatorios
-  if (!email) return alert("You must enter your email");
-  if (!password) return alert("You must enter a password");
-  if (!role) return alert("You must select a role");
+      await httpAddEmployed(token, newUser);
+      console.log("Se inserto al empleado con exito")
+      //segun el rol se navegar
 
-  // Creación del objeto newUser con los datos ingresados
-  const newUser = {
-    "email": email,
-    "password": password,
-    "role": role
-  };
+    } catch {
+      console.log('No se pudo agregar al empleado');
+    }
 
-  try {
-    await httpAddEmployed(token, newUser); // Llamada a la función httpAddEmployed para agregar un empleado
-    console.log("Se inserto al empleado con exito");
-    // Según el rol, se puede navegar a una página específica
-  } catch {
-    console.log('No se pudo agregar al empleado');
   }
-}
 
-async function readEmployed() {
-  setEmployed(await httpGetEmployed(localStorage.getItem("token"))); // Llamada a la función httpGetEmployed para obtener los empleados
-}
+  async function readEmployed() {
+    setEmployed(await httpGetEmployed(localStorage.getItem("token")));
+  }
 
-// Utilización del hook useEffect para ejecutar la función read al cargar el componente
-useEffect(() => {
-  const read = async () => {
-    await readEmployed();
-  };
-  read();
-}, []);
+  useEffect(() => {
+    const read = async () => {
+      await readEmployed();
+    };
+    read();
+  },)
 
 
   return (
@@ -92,7 +88,7 @@ useEffect(() => {
               <option value="chef">Chef</option>
               <option value="waiter">Waiter</option>
             </select>
-            <button type="submit" className="wt-orders-table__submit-button" >Add Employed</button>
+            <button type="submit">Add Employed</button>
           </form>
         </aside>
       </main>
