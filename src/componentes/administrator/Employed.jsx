@@ -50,6 +50,9 @@ const Administrador = ({ token }) => {
       <NavAdmin />
       <main className='adm-main-container'>
         <div>
+        <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
           <h5>List Of Waiters </h5>
 
           <table className='table-list-of-employed'>
